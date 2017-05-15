@@ -47,17 +47,29 @@ var game = {
     }
     else if(this.guessesRemaining<=0){
       console.log("guessesend");
-      //gameLost
+      this.gameLost();
     }
   },
 
   gameLost: function(){
     //ideally, display message and say press another button to play again
     //but also, reveal the full word
+    messageBox = document.getElementById("message");
+    lossCount = document.getElementById("losscount");
+    count = lossCount.textContent;
+    //change the tally value to be itself plus one
+    lossCount.textContent = parseInt(count) + 1;
+    messageBox.textContent = "Oh no, you lost! Press any key to try again!";
+    this.gameState = 0;
+
   },
 
   gameWon: function(){
     //ideally, display message and say press another button to play again
+  },
+
+  updateDisplay: function(){
+
   }
 
 };
