@@ -27,11 +27,11 @@ var game = {
         //js strings are immutable, so add to it in a weird way
         this.board = this.board.substr(0,i*2) + this.word[i] + this.board.substr(i*2+1);
         console.log(this.board);
-        corret = true;
+        correct = true;
       }
     }
     if(!correct){
-      console.log(correct)
+      console.log(correct);
       this.guessesRemaining--;
       // console.log(this.guessesRemaining);
     }
@@ -77,8 +77,12 @@ var game = {
 
   startGame: function(){
     this.gameState = 1;
+    this.board = "";
+    this.guessesRemaining = 7;
+    this.guessedLetters = [];
     this.pickWord();
     this.setBoard();
+    this.updateScreen();
   },
 
   updateScreen: function(){
