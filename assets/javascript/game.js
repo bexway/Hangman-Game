@@ -36,6 +36,8 @@ var game = {
     }
     this.guessedLetters += letter;
     console.log(this.guessedLetters);
+    //will check if the game is over, and end it if it is.
+    this.updateGuesses()
     this.checkGameEnd();
   },
 
@@ -72,19 +74,17 @@ var game = {
     this.gameState = 0;
   },
 
-  // gameWon: function(){
-  //   //ideally, display message and say press another button to play again
-  //   messageBox = document.getElementById("message");
-  //   winCount = document.getElementById("wincount");
-  //   count = lossCount.textContent;
-  //   //change the tally value to be itself plus one
-  //   lossCount.textContent = parseInt(count) + 1;
-  //   messageBox.textContent = "Oh no, you lost! Press any key to play again!";
-  //   this.gameState = 0;
-  // },
+  startGame: function(){
+    this.gameState = 1;
+    this.pickWord();
+    this.setBoard();
+  },
 
-  updateDisplay: function(){
-
+  updateGuesses: function(){
+    letterBox = document.getElementById("guessedLetters");
+    guessesBox = document.getElementById("guessesRemaining");
+    letterBox.textContent = this.guessedLetters;
+    guessesBox.textContent = this.guessesRemaining;
   }
 
 };
