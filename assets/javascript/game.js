@@ -1,7 +1,7 @@
 var game = {
   word : "word",
   board: "",
-  guessedLetters: [],
+  guessedLetters: "",
   guessesRemaining: 7,
   wins : 0,
   gameState : 0,
@@ -20,37 +20,42 @@ var game = {
 
   checkLetter: function(letter){
     var correct = false;
+    var messageBox = document.getElementById("message");
     //go through the word and check for the chosen letter
-    for(var i=0;i< this.word.length;i++){
-      if(letter.toLowerCase()===this.word[i].toLowerCase()){
-        this.board[i*2] = letter;
-        //js strings are immutable, so add to it in a weird way
-        this.board = this.board.substr(0,i*2) + this.word[i] + this.board.substr(i*2+1);
-        console.log(this.board);
-        correct = true;
+    if(isCharInStr(letter, this.guessedLetters)){
+      messageBox.textContent = "You've already guessed that letter! Try again!";
+    }
+    else{
+      messageBox.textContent = "You guessed "+letter;
+      for(var i=0;i< this.word.length;i++){
+        if(letter.toLowerCase()===this.word[i].toLowerCase()){
+          this.board[i*2] = letter;
+          //js strings are immutable, so add to it in a weird way
+          this.board = this.board.substr(0,i*2) + this.word[i] + this.board.substr(i*2+1);
+          console.log(this.board);
+          correct = true;
+        }
       }
+      if(!correct){
+        console.log(correct);
+        this.guessesRemaining--;
+        // console.log(this.guessesRemaining);
+      }
+      this.guessedLetters += letter;
+      console.log(this.guessedLetters);
+      //will check if the game is over, and end it if it is.
+      this.updateScreen();
+      this.checkGameEnd();
     }
-    if(!correct){
-      console.log(correct);
-      this.guessesRemaining--;
-      // console.log(this.guessesRemaining);
-    }
-    this.guessedLetters += letter;
-    console.log(this.guessedLetters);
-    //will check if the game is over, and end it if it is.
-    this.updateScreen();
-    this.checkGameEnd();
   },
 
   checkGameEnd: function(){
     //Check if word is solved
     if(!isCharInStr("_", this.board)){
-      console.log("end");
       //gameWon
       this.gameOver(1);
     }
     else if(this.guessesRemaining<=0){
-      console.log("guessesend");
       this.gameOver(0);
     }
   },
