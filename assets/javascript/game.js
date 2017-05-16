@@ -37,7 +37,7 @@ var game = {
     this.guessedLetters += letter;
     console.log(this.guessedLetters);
     //will check if the game is over, and end it if it is.
-    this.updateGuesses()
+    this.updateGuesses();
     this.checkGameEnd();
   },
 
@@ -89,25 +89,6 @@ var game = {
 
 };
 
-game.pickWord();
-game.setBoard();
-game.checkLetter("e");
-game.checkLetter("a");
-game.checkLetter("i");
-game.checkLetter("o");
-game.checkLetter("u");
-game.checkLetter("s");
-game.checkLetter("t");
-game.checkLetter("r");
-game.checkLetter("l");
-game.checkLetter("p");
-game.checkLetter("w");
-game.checkLetter("y");
-game.checkLetter("k");
-game.checkLetter("m");
-game.checkLetter("n");
-game.checkLetter("c");
-
 function isCharInStr(char, str){
   for(var i = 0; i<str.length; i++){
     if(str[i] === char){
@@ -117,7 +98,20 @@ function isCharInStr(char, str){
   return false;
 }
 
+function isLetter(c) {
+  return c.toLowerCase() != c.toUpperCase();
+}
+
 //Listen for keys, and act based on game state
 //if playing, check letter
 //if not playing, start new round
-// document.onkeyup = function(event) {}
+document.onkeyup = function(event) {
+  if(game.gameState){
+    if(isLetter(event.key)){
+      game.checkLetter(event.key);
+    }
+  }
+  else{
+    game.startGame();
+  }
+};
