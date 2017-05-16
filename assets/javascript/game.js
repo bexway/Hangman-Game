@@ -44,29 +44,44 @@ var game = {
     if(!isCharInStr("_", this.board)){
       console.log("end");
       //gameWon
+      this.gameOver(1);
     }
     else if(this.guessesRemaining<=0){
       console.log("guessesend");
-      this.gameLost();
+      this.gameOver(0);
     }
   },
 
-  gameLost: function(){
+  gameOver: function(isWon){
     //ideally, display message and say press another button to play again
     //but also, reveal the full word
+    var countBox, messageBox, message, count;
     messageBox = document.getElementById("message");
-    lossCount = document.getElementById("losscount");
-    count = lossCount.textContent;
+    if(isWon){
+      countBox = document.getElementById("wincount");
+      message = "Hooray, you won! Press any key to play again!";
+    }
+    else{
+      countBox = document.getElementById("losscount");
+      message = "Oh no, you lost! Press any key to play again!";
+    }
+    count = countBox.textContent;
     //change the tally value to be itself plus one
-    lossCount.textContent = parseInt(count) + 1;
-    messageBox.textContent = "Oh no, you lost! Press any key to try again!";
+    countBox.textContent = parseInt(count) + 1;
+    messageBox.textContent = message;
     this.gameState = 0;
-
   },
 
-  gameWon: function(){
-    //ideally, display message and say press another button to play again
-  },
+  // gameWon: function(){
+  //   //ideally, display message and say press another button to play again
+  //   messageBox = document.getElementById("message");
+  //   winCount = document.getElementById("wincount");
+  //   count = lossCount.textContent;
+  //   //change the tally value to be itself plus one
+  //   lossCount.textContent = parseInt(count) + 1;
+  //   messageBox.textContent = "Oh no, you lost! Press any key to play again!";
+  //   this.gameState = 0;
+  // },
 
   updateDisplay: function(){
 
