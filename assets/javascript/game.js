@@ -31,13 +31,14 @@ var game = {
       }
     }
     if(!correct){
+      console.log(correct)
       this.guessesRemaining--;
       // console.log(this.guessesRemaining);
     }
     this.guessedLetters += letter;
     console.log(this.guessedLetters);
     //will check if the game is over, and end it if it is.
-    this.updateGuesses();
+    this.updateScreen();
     this.checkGameEnd();
   },
 
@@ -80,11 +81,13 @@ var game = {
     this.setBoard();
   },
 
-  updateGuesses: function(){
+  updateScreen: function(){
     letterBox = document.getElementById("guessedLetters");
     guessesBox = document.getElementById("guessesRemaining");
+    boardBox = document.getElementById("board");
     letterBox.textContent = this.guessedLetters;
     guessesBox.textContent = this.guessesRemaining;
+    boardBox.textContent = this.board;
   }
 
 };
