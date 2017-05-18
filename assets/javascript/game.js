@@ -52,7 +52,6 @@ var game = {
   checkGameEnd: function(){
     //Check if word is solved
     if(!isCharInStr("_", this.board)){
-      //gameWon
       this.gameOver(1);
     }
     else if(this.guessesRemaining<=0){
@@ -63,7 +62,7 @@ var game = {
   gameOver: function(isWon){
     //ideally, display message and say press another button to play again
     //but also, reveal the full word
-    var countBox, messageBox, message, count;
+    var countBox, messageBox, message, count, boardBox;
     messageBox = document.getElementById("message");
     if(isWon){
       countBox = document.getElementById("wincount");
@@ -71,6 +70,9 @@ var game = {
     }
     else{
       countBox = document.getElementById("losscount");
+      boardBox = document.getElementById("board");
+      //adding the word to the board if you lost, so you can see what you didn't guess
+      boardBox.textContent = this.word.split('').join(' ');
       message = "Oh no, you lost! Press any key to play again!";
     }
     count = countBox.textContent;
