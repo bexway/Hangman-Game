@@ -5,9 +5,10 @@ var game = {
   guessesRemaining: 7,
   wins : 0,
   gameState : 0,
+  database: word_db,
 
   pickWord: function(){
-    this.word = word_db[Math.floor(Math.random()*word_db.length)];
+    this.word = this.database[Math.floor(Math.random()*this.database.length)];
   },
 
   setBoard: function(){
@@ -97,6 +98,24 @@ var game = {
     letterBox.textContent = this.guessedLetters;
     guessesBox.textContent = this.guessesRemaining;
     boardBox.textContent = this.board;
+  },
+
+  postMessage: function(message){
+    var messageBox = document.getElementById("message");
+    messageBox.textContent = message;
+  },
+
+  setDB: function(db){
+    console.log(db);
+    switch(db){
+      case 'word-db':
+        this.database = word_db;
+        break;
+      case "food-db":
+        this.database = food_db;
+        break;
+    }
+    this.startGame();
   }
 
 };

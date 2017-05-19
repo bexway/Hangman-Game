@@ -13,28 +13,37 @@
   <body>
     <div class="container">
       <div class="row">
-        <div class="col-md-12 text-center font-color-white"><p id="message">Press any button to start!</p></div>
+        <div class="col-md-12 text-center font-color-white font-family-header font-size-header"><p id="message">Press any button to start!</p></div>
       </div>
       <div class="row">
-        <div class="col-md-12 text-center border background-white">
+        <div class="col-md-12 text-center border background-white font-family-body font-size-body">
           <p id="board"></p>
         </div>
       </div>
-      <div class="row flex-parent">
+      <div class="row flex-parent font-family-body font-size-body">
         <div class="col-md-4 border margin background-white"><p id="lastGuess"></p></div>
         <div class="col-md-1"></div>
         <div class="col-md-6 border margin background-white"><p>Your guessed letters: <span id="guessedLetters"></span></p></div>
       </div>
-      <div class="row flex-parent">
+      <div class="row flex-parent font-family-body font-size-body">
         <div class="col-md-4 border margin background-white"><p>Guesses remaining: <span id="guessesRemaining"></span></p></div>
         <div class="col-md-1"></div>
         <div class="col-md-6 border margin background-white"><p>Wins: <span id="wincount">0</span></p>
         <p>Losses: <span id="losscount">0</span></p></div>
       </div>
+      <div class="row flex-parent">
+        <div class="col-md-12 text-center border background-white font-size-body padding">
+          <p>Want different words? Click a button for a different database!</p>
+          <button onclick="game.setDB('word-db')" class="btn" id="word-db-btn">Assorted Words Database</button>
+          <button onclick="game.setDB('food-db')" class="btn" id="food-db-btn">Food Words Database</button>
+        </div>
+      </div>
+
     </div>
 
 
     <script src="assets/javascript/word_db.js"></script>
+    <script src="assets/javascript/food_db.js"></script>
     <script type="text/javascript" src="assets/javascript/game.js"></script>
   </body>
 </html>

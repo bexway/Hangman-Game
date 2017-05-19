@@ -32,8 +32,28 @@ body{
   color: white;
 }
 
+.font-family-header{
+  font-family: 'Pacifico', cursive;
+}
+
+.font-family-body{
+  font-family: 'Indie Flower', cursive;
+}
+
+.font-size-header{
+  font-size: 3em;
+}
+
+.font-size-body{
+  font-size: 1.5em;
+}
+
 .margin{
   margin:1em;
+}
+
+.padding{
+  padding: .5em;
 }
 
 .text-center{
