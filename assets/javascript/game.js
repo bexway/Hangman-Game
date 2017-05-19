@@ -8,31 +8,29 @@ var game = {
 
   pickWord: function(){
     this.word = word_db[Math.floor(Math.random()*word_db.length)];
-    console.log(this.word);
   },
 
   setBoard: function(){
     for(var i=0;i< this.word.length;i++){
       this.board += "_ ";
     }
-    console.log(this.board);
   },
 
   checkLetter: function(letter){
     var correct = false;
     var messageBox = document.getElementById("message");
+    var lastGuessBox = document.getElementById("lastGuess");
     //go through the word and check for the chosen letter
     if(isCharInStr(letter, this.guessedLetters)){
       messageBox.textContent = "You've already guessed that letter! Try again!";
     }
     else{
-      messageBox.textContent = "You guessed "+letter;
+      lastGuessBox.textContent = letter;
       for(var i=0;i< this.word.length;i++){
         if(letter.toLowerCase()===this.word[i].toLowerCase()){
           this.board[i*2] = letter;
           //js strings are immutable, so add to it in a weird way
           this.board = this.board.substr(0,i*2) + this.word[i] + this.board.substr(i*2+1);
-          console.log(this.board);
           correct = true;
         }
       }

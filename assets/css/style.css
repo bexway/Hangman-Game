@@ -1,3 +1,41 @@
 * {
   box-sizing: border-box
 }
+
+.border{
+  border: 1px solid gray;
+}
+
+.background-white{
+  background-color: white;
+}
+
+body{
+    background-image: url("../images/starring/starring.png");
+    background-repeat: repeat;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    overflow: auto;
+}
+
+.flex-parent{
+  display: flex;
+  justify-content: space-between;
+}
+
+.font-color-white{
+  color: white;
+}
+
+.margin{
+  margin:1em;
+}
+
+.text-center{
+  text-align: center;
+}

@@ -4,20 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Hangman Game</title>
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower|Pacifico" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/style.css">
   </head>
   <body>
-    <p id="message">Press any button to start!</p>
-    <p>Your word board: <span id="board"></span></p>
-    <p>Your guessed letters: <span id="guessedLetters"></span></p>
-    <p>Guesses remaining: <span id="guessesRemaining"></span></p>
-    <p>
-
-    </p>
-    <p>Wins: <span id="wincount">0</span></p>
-    <p>Losses: <span id="losscount">0</span></p>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 text-center font-color-white"><p id="message">Press any button to start!</p></div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 text-center border background-white">
+          <p id="board"></p>
+        </div>
+      </div>
+      <div class="row flex-parent">
+        <div class="col-md-4 border margin background-white"><p id="lastGuess"></p></div>
+        <div class="col-md-1"></div>
+        <div class="col-md-6 border margin background-white"><p>Your guessed letters: <span id="guessedLetters"></span></p></div>
+      </div>
+      <div class="row flex-parent">
+        <div class="col-md-4 border margin background-white"><p>Guesses remaining: <span id="guessesRemaining"></span></p></div>
+        <div class="col-md-1"></div>
+        <div class="col-md-6 border margin background-white"><p>Wins: <span id="wincount">0</span></p>
+        <p>Losses: <span id="losscount">0</span></p></div>
+      </div>
+    </div>
 
 
     <script src="assets/javascript/word_db.js"></script>
