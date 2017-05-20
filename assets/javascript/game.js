@@ -129,8 +129,12 @@ function isCharInStr(char, str){
   return false;
 }
 
-function isLetter(c) {
-  return c.toLowerCase() != c.toUpperCase();
+// function isLetter(c) {
+//   return c.toLowerCase() != c.toUpperCase();
+// }
+
+function isLetter(e){
+  return (e.keyCode >= 65 && e.keyCode <= 90);
 }
 
 //Listen for keys, and act based on game state
@@ -138,7 +142,7 @@ function isLetter(c) {
 //if not playing, start new round
 document.onkeyup = function(event) {
   if(game.gameState){
-    if(isLetter(event.key)){
+    if(isLetter(event)){
       game.checkLetter(event.key);
     }
   }
